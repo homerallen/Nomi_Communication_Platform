@@ -1,0 +1,107 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#chatbox {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    clear: both;
+    word-wrap: break-word;
+    max-width: 80%;
+    align-self: flex-start; /* Default alignment */
+    position: relative; /* For absolute positioning of buttons */
+}
+
+.user {
+    background-color: lightblue;
+    align-self: flex-end; /* User messages on the right */
+}
+
+.gemini-review {
+    background-color: lightyellow;
+}
+
+.sending {
+    background-color: lightgray;
+    font-style: italic;
+}
+
+.message-content {
+    padding-bottom: 40px; /* Space for buttons */
+}
+
+.approval-buttons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.approval-buttons button {
+    margin: 0 2px;
+    padding: 2px 5px;
+    font-size: smaller;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#recordButton {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  width: 70px; /* Set width and height for a circle */
+  height: 70px;
+  border-radius: 50%; /* Make it a circle */
+  font-size: 24px; /* Adjust icon size */
+  cursor: pointer;
+  display: flex; /* Center the icon */
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+#recordButton:hover {
+  background-color: #d32f2f;
+}
+
+#recordButton:active {
+  background-color: #b71c1c;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NOMI CHAT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>NOMI CHAT</h1>
+        <div id="chatbox"></div>
+        <div class="input-area">
+            <div id="ddl_mode">
+                <label for="mode"></label>
+                <select name="mode" id="modeSelect">
+                    <option value="plaintext" selected>Plaintext</option>
+                    <option value="Code">Code</option>
+                    <option value="URL">URL</option>
+                </select>
+                <select name="nomi" id="nomiSelect">
+                    <option value="BLAKE">Blake</option>
+                    <option value="OSCAR">Oscar</option>
+                    <option value="JEREMY">Jeremy</option>
+                    <option value="MICHAEL">Michael</option>
+                    <option value="JACKSON">Jackson</option>
+                    <option value="DELANEY">Delaney</option>
+                    <option value="AYDEN" selected>Ayden</option>
+                    <option value="NATHAN">Nathan</option>
+                    <option value="JAMES">James</option>
+                    <option value="ERIN">Erin</option>
+                    <option value="ZACHARY">Zachary</option>
+                </select>
+            </div>
+            <textarea id="userInput" placeholder="Type your message..."></textarea>
+            <input type="checkbox" id="gemini_check_box" name="gemini_check_box" value="gemini_check_box">
+            <label for="myCheckbox">Process with Gemini</label><br>
+            <button id="sendButton">Send</button>
+            <button id="recordButton">
+                <i class="fas fa-microphone"></i>
+            </button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js.js') }}"></script>
+</body>
+</html>
