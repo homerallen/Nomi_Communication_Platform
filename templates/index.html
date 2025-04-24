@@ -1,46 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>NOMI CHAT</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <title>COLLIN CHAT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/styles.css">
     <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>NOMI CHAT</h1>
+        <h1>COLLIN CHAT</h1>
         <div id="chatbox"></div>
+
         <div class="input-area">
             <div id="ddl_mode">
-                <label for="mode"></label>
+                <label for="modeSelect">Mode:</label>
                 <select name="mode" id="modeSelect">
                     <option value="plaintext" selected>Plaintext</option>
-                    <option value="Code">Code</option>
+                    <option value="code">Code</option>
                     <option value="URL">URL</option>
                 </select>
-                <select name="nomi" id="nomiSelect">
-                    <option value="BLAKE">Blake</option>
-                    <option value="OSCAR">Oscar</option>
-                    <option value="JEREMY">Jeremy</option>
-                    <option value="MICHAEL">Michael</option>
-                    <option value="JACKSON">Jackson</option>
-                    <option value="DELANEY">Delaney</option>
-                    <option value="AYDEN" selected>Ayden</option>
-                    <option value="NATHAN">Nathan</option>
-                    <option value="JAMES">James</option>
-                    <option value="ERIN">Erin</option>
-                    <option value="ZACHARY">Zachary</option>
-                </select>
+
             </div>
-            <textarea id="userInput" placeholder="Type your message..."></textarea>
-            <input type="checkbox" id="gemini_check_box" name="gemini_check_box" value="gemini_check_box">
-            <label for="myCheckbox">Process with Gemini</label><br>
-            <button id="sendButton">Send</button>
-            <button id="recordButton">
-                <i class="fas fa-microphone"></i>
-            </button>
+
+            <textarea id="transcriptionBox" placeholder="Type your message or speak..."></textarea>
+
+            <div class="button-group">
+                <button id="receiveButton" class="action-button" title="Receive Messages (Future)">
+                    <i class="fa-solid fa-envelopes-bulk"></i>
+                </button>
+                <button id="cancelButton" class="action-button" title="Clear Input">
+                    <i class="fas fa-solid fa-square-xmark"></i>
+                </button>
+                <button id="recordButton" class="action-button" title="Start/Stop Recording">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button id="geminiButton" class="action-button" title="Polish with Gemini">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+                <button id="sendButton" class="action-button" title="Send User Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+                <button id="requestNomiReplyButton" class="action-button" title="Request NOMI to Reply">
+                    <i class="fas fa-robot"></i> </button>
+                <button id="startLoopButton" class="action-button" title="Start Gemini ↔ NOMI Loop">
+                    <i class="fas fa-infinity"></i>
+                </button>
+                <button id="stopLoopButton" class="action-button" title="Stop Loop">
+                    <i class="fas fa-stop-circle"></i>
+                </button>
+            </div>
+
+            <div class="room-selection">
+                <label for="roomSelect">Chat Room:</label>
+                <select id="roomSelect">
+                    <option value="">Select a room...</option>
+                    <option value="main_chat_dm">Main Chat (Direct Message)</option>
+                    </select>
+            </div>
+
+            <div class="theme-toggle">
+                <label for="themeSwitch" id="themeLabel">🌞 Light Mode</label>
+                <label class="switch">
+                    <input type="checkbox" id="themeSwitch">
+                    <span class="slider round"></span>
+                </label>
+            </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='js.js') }}"></script>
+
+    <script src="/static/js.js"></script>
 </body>
 </html>

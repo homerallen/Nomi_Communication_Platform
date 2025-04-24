@@ -4,7 +4,8 @@ import zlib
 import requests
 from markdownify import markdownify as md
 
-def chunk_data(data, max_chunk_size=850):
+
+def chunk_data(data, max_chunk_size=450):
     """
   Chunks the provided data into smaller pieces of a specified maximum size.
 

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal HUD</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .hud-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .hud-item {
+      background: #222;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 10px #000;
+    }
+    .bar-graph {
+      background: #333;
+      border-radius: 10px;
+      height: 20px;
+      margin-top: 10px;
+    }
+    .bar {
+      height: 100%;
+      border-radius: 10px;
+    }
+    canvas {
+      max-width: 100%;
+    }
+    .overall-score {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #8fce00;
+    }
+  </style>
+</head>
+<body>
+  <div class="hud-container">
+    <div class="hud-item mood">
+      <h3>Mood: <span class="value">93</span></h3>
+      <div class="bar-graph">
+        <div class="bar" style="width: 93%; background-color: #8fce00;"></div>
+      </div>
+    </div>
+
+    <div class="hud-item energy">
+      <h3>Energy: <span class="value">87</span></h3>
+      <div class="bar-graph">
+        <div class="bar" style="width: 87%; background-color: #ffd700;"></div>
+      </div>
+    </div>
+
+    <div class="hud-item productivity">
+      <h3>Productivity</h3>
+      <canvas id="productivityChart"></canvas>
+    </div>
+
+    <div class="hud-item proficiency">
+      <h3>Proficiency</h3>
+      <canvas id="proficiencyRadar"></canvas>
+      <p class="overall-score">Overall Score: <span class="value">93</span> / 100</p>
+    </div>
+  </div>
+
+  <script>
+    // Productivity Line Chart
+    const productivityData = {
+      labels: ['Morning', 'Mid-Day', 'Afternoon', 'Evening'],
+      datasets: [{
+        label: 'Productivity',
+        data: [75, 83, 88, 89],
+        fill: false,
+        borderColor: 'lightblue',
+        tension: 0.1,
+        pointBackgroundColor: 'white',
+        pointBorderColor: 'lightblue',
+        pointRadius: 5
+      }]
+    };
+
+    const productivityConfig = {
+      type: 'line',
+      data: productivityData,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { color: 'white' },
+            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+          },
+          x: {
+            ticks: { color: 'white' },
+            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: { color: 'white' }
+          }
+        }
+      }
+    };
+
+    new Chart(document.getElementById('productivityChart'), productivityConfig);
+
+    // Proficiency Radar Chart
+    const proficiencyData = {
+      labels: [
+        'Communication',
+        'Problem-Solving',
+        'Learning',
+        'Curiosity',
+        'Empathy',
+        'Happiness',
+        'Sadness',
+        'Anger',
+        'Computer Science Proficiency',
+        'Theology Proficiency'
+      ],
+      datasets: [{
+        label: 'Proficiency Level',
+        data: [96, 94, 92, 98, 95, 99, 2, 1, 97, 94],
+        fill: true,
+        backgroundColor: 'rgba(0, 255, 0, 0.3)',
+        borderColor: '#00FF00',
+        borderWidth: 3,
+        pointBackgroundColor: '#00FF00',
+        pointBorderColor: '#000',
+        pointRadius: 6,
+        pointHoverRadius: 9,
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: '#00FF00'
+      }]
+    };
+
+    const proficiencyConfig = {
+      type: 'radar',
+      data: proficiencyData,
+      options: {
+        elements: {
+          line: { borderWidth: 3 }
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            min: 0,
+            max: 100,
+            ticks: {
+              stepSize: 20,
+              color: '#00FF00',
+              backdropColor: 'rgba(0, 0, 0, 0.5)',
+              backdropPadding: 3
+            },
+            pointLabels: {
+              color: '#00FF00',
+              font: { size: 14 }
+            },
+            grid: { color: 'rgba(0, 255, 0, 0.15)' },
+            angleLines: { color: 'rgba(255, 255, 255, 0.2)' }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: { color: '#00FF00' }
+          }
+        }
+      }
+    };
+
+    new Chart(document.getElementById('proficiencyRadar'), proficiencyConfig);
+  </script>
+</body>
+</html>
